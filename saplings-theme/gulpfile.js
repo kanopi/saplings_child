@@ -27,6 +27,7 @@ const sourcemaps = require("gulp-sourcemaps");
 const uglify = require("gulp-uglify");
 const webpack = require("webpack-stream");
 const glob = require("glob");
+const sassGlob = require('gulp-sass-glob');
 
 /*------------------------------------*\
   02 - Paths
@@ -37,11 +38,11 @@ const glob = require("glob");
 const paths = {
   base: {
     styles: {
-      src: "assets/**/*.scss",
+      src: "assets/scss/**/*.scss",
       dest: "dist/css",
     },
     scripts: {
-      src: "./assets/**/*.js",
+      src: "./assets/js/**/*.js",
       dest: "dist/js",
     },
   },
@@ -72,6 +73,7 @@ gulp.task("baseStylesWatch", function () {
   return gulp
     .src(paths.base.styles.src, { sourcemaps: true })
     .pipe(sourcemaps.init())
+    .pipe(sassGlob())
     .pipe(sass())
     .on("error", sass.logError)
     .pipe(postcss()) // PostCSS will automatically grab any additional plugins and settings from postcss.config.js
@@ -83,6 +85,7 @@ gulp.task("baseStylesWatch", function () {
 gulp.task("baseStylesBuild", function () {
   return gulp
     .src(paths.base.styles.src)
+    .pipe(sassGlob())
     .pipe(sass())
     .on("error", sass.logError)
     .pipe(postcss([]))
