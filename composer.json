@@ -1,0 +1,15 @@
+{
+    "name": "kanopi/saplings-child",
+    "description": "Drupal theme for Hanson Bridgett",
+    "type": "drupal-custom-theme",
+    "homepage": "https://github.com/kanopi/hanson-bridgett",
+    "support": {
+      "issues": "https://github.com/kanopi/hanson-bridgett/issues"
+    },
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+    }
+  }
+  

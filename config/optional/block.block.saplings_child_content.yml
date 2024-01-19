@@ -4,9 +4,9 @@ dependencies:
   module:
     - system
   theme:
-    - ui_suite_bootstrap_subtheme_example
-id: ui_suite_bootstrap_subtheme_example_content
-theme: ui_suite_bootstrap_subtheme_example
+    - saplings_child
+id: saplings_child_content
+theme: saplings_child
 region: content
 weight: 0
 provider: null

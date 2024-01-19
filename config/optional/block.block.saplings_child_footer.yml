@@ -6,9 +6,9 @@ dependencies:
   module:
     - system
   theme:
-    - ui_suite_bootstrap_subtheme_example
-id: ui_suite_bootstrap_subtheme_example_footer
-theme: ui_suite_bootstrap_subtheme_example
+    - saplings_child
+id: saplings_child_footer
+theme: saplings_child
 region: footer
 weight: 0
 provider: null

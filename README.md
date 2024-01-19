@@ -1,6 +1,6 @@
-# Saplings Theme
+# Saplings Child Theme
 
-This is an example subtheme to demonstrate how some integrations can be done like:
+This is a subtheme of the Ui Bootstrap Theme to demonstrate how some integrations can be done like:
 
 - CKEditor 5 stylesheets
 - Negative margins in utility classes
@@ -22,21 +22,15 @@ You will have to change:
 
 Follow these steps to set up and customize your subtheme:
 
-1. Run the following command to install the Bootstrap library:
-
-   ```
-   fin composer require twbs/bootstrap:5.3.2
-   ```
-
-2. Navigate to your theme directory:
+1. Navigate to your theme directory:
 
    ```
    cd web/themes/custom/your_theme_name
    ```
 
-3. Create all your custom SCSS files under the "assets/scss/custom" directory.
+2. Create all your custom SCSS files under the "assets/scss/custom" directory.
 
-4. Run the following command to compile SCSS files:
+3. Run the following command to compile SCSS files:
 
    ```
    npm run watch
