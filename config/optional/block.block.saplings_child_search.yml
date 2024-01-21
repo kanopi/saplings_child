@@ -4,9 +4,9 @@ dependencies:
   module:
     - search
   theme:
-    - ui_suite_bootstrap_subtheme_example
-id: ui_suite_bootstrap_subtheme_example_search
-theme: ui_suite_bootstrap_subtheme_example
+    - saplings_child
+id: saplings_child_search
+theme: saplings_child
 region: sidebar_first
 weight: -1
 provider: null

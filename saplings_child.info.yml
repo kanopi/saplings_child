@@ -1,7 +1,7 @@
-name: "Saplings Theme"
+name: "Saplings Child"
 type: theme
-description: "Saplings Theme"
-core_version_requirement: ^9 || ^10
+description: "Saplings Child Theme"
+core_version_requirement: ^10
 base theme: ui_suite_bootstrap
 
 regions:
@@ -28,11 +28,6 @@ libraries-override:
 
 libraries-extend:
   ui_suite_bootstrap/bootstrap:
-    - saplings_theme/bootstrap
+    - saplings_child/bootstrap
   ui_suite_bootstrap/form:
-    - saplings_theme/form
-
-# Information added by Drupal.org packaging script on 2023-12-07
-version: "5.0.0-alpha12"
-project: "ui_suite_bootstrap"
-datestamp: 1701963129
+    - saplings_child/form
