@@ -1,12 +1,14 @@
 # Saplings Child Theme
 
-This is a subtheme of the Ui Bootstrap Theme to demonstrate how some integrations can be done like:
+This is a subtheme of the Ui Bootstrap Theme to demonstrate how some
+integrations can be done like:
 
 - CKEditor 5 stylesheets
 - Negative margins in utility classes
 - Background gradients
 
-Those integrations cannot be done in the base theme because either not enabled in Bootstrap default compiled CSS or impossible to do in a generic way.
+Those integrations cannot be done in the base theme because either not enabled
+in Bootstrap default compiled CSS or impossible to do in a generic way.
 
 ## Usage
 
@@ -25,7 +27,7 @@ Follow these steps to set up and customize your subtheme:
 1. Navigate to your theme directory:
 
    ```
-   cd web/themes/custom/your_theme_name
+   cd web/themes/custom/saplings_child
    ```
 
 2. Create all your custom SCSS files under the "assets/scss/custom" directory.
@@ -36,7 +38,8 @@ Follow these steps to set up and customize your subtheme:
    npm run watch
    ```
 
-   This command watches for changes in your SCSS files and automatically compiles them.
+   This command watches for changes in your SCSS files and automatically
+   compiles them.
 
 ## Policy
 
