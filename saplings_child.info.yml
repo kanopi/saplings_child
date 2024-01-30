@@ -18,7 +18,7 @@ regions:
   page_bottom: "Page bottom"
 
 ckeditor5-stylesheets:
-  - assets/css/ckeditor5.css
+  - dist/css/ckeditor5.css
 
 libraries-override:
   ui_suite_bootstrap/bootstrap:
