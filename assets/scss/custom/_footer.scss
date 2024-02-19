@@ -1,0 +1,51 @@
+// Footer.
+#footer {
+  // Footer brand block placed first.
+  #block-saplings-child-sitebranding-footer {
+    padding-left: 2rem;
+  }
+
+  .navbar-brand {
+    color: #fff;
+    font-size: 1.25rem;
+    margin-right: 1rem;
+  }
+
+  // Alight menus to the right.
+  .navbar-nav {
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 2rem;
+
+    // Link styling.
+    a {
+      text-decoration: underline;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
+  // More link styling.
+  .nav-link,
+  span {
+    color: #fff;
+    display: block;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+  }
+}
+
+// Stack all menus on mobile.
+@include media-breakpoint-down(md) {
+  #footer {
+    .navbar-nav {
+      flex-direction: column;
+      justify-content: start;
+      gap: 0;
+    }
+  }
+}

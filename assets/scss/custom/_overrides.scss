@@ -1,0 +1,32 @@
+// Overrides.
+// Makes images responsive.
+.img-fluid {
+  width: 100% !important;
+}
+
+// Make sure container fluid is edge to edge.
+.container-fluid {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+// Main menu.
+#block-saplings-child-mainnavigation {
+  width: 100%;
+}
+
+// Main menu align right.
+.navbar-expand-lg .navbar-nav {
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+// Unset align right on mobile.
+@include media-breakpoint-down(md) {
+  .navbar-expand-lg .navbar-nav {
+    flex-direction: column;
+    justify-content: start;
+    gap: 0;
+  }
+}
