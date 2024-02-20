@@ -111,11 +111,11 @@
             {{ title_prefix }}
             <h1>{{ label }}</h1>
             {{ title_suffix }}
-            {% if node.bundle == 'sa_post' %}
+            {# {% if node.bundle == 'sa_post' and node.isPublished() %}
               <div class="field--name-published_at">
                 {{ node.published_at.value|date('F j, Y') }}
               </div>
-            {% endif %}
+            {% endif %} #}
             {% if content.sa_author|render|striptags|trim is not empty %}
               <div class="field--name-sa-author">
                 <span class="fw-bold">By: </span>

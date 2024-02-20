@@ -16,13 +16,13 @@
             {{ content }}
           </div>
           {% endif %}
-          {% if footer %}
+        </div>
+      </div>
+      {% if footer %}
           <div class="card-footer">
             {{ footer }}
           </div>
           {% endif %}
-        </div>
-      </div>
     </div>
   </div>
 {% else %}
@@ -41,12 +41,12 @@
         {{ content }}
       </div>
       {% endif %}
-      {% if footer %}
+    </div>
+    {% if footer %}
       <div class="card-footer">
         {{ footer }}
       </div>
       {% endif %}
-    </div>
     {% if image and image_position == 'bottom' %}
       {{ image|add_class('card-img-bottom') }}
     {% endif %}
