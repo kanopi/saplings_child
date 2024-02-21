@@ -30,3 +30,9 @@
     gap: 0;
   }
 }
+
+// Fix Bootstrap placeholder styles in admin theme.
+em.placeholder {
+  background-color: transparent;
+  opacity: 1;
+}

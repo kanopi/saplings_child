@@ -90,7 +90,12 @@
 [data-overlay="dark_50"]::before,
 [data-overlay="dark_25"]::before {
   background: #252525;
+}
 
+[data-overlay="dark_90"],
+[data-overlay="dark_75"],
+[data-overlay="dark_50"],
+[data-overlay="dark_25"] {
   .page-header__meta,
   .field--name-sa-description {
     @extend .text-white;
@@ -103,8 +108,13 @@
 [data-overlay="light_50"]::before,
 [data-overlay="light_25"]::before {
   background: #fff;
+}
 
-  .page-header__meta,
+[data-overlay="light_90"],
+[data-overlay="light_75"],
+[data-overlay="light_50"],
+[data-overlay="light_25"] {
+.page-header__meta,
   .field--name-sa-description {
     @extend .text-dark;
   }
