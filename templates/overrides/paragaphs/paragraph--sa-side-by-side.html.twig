@@ -53,38 +53,37 @@
 
 {% set textleft = '' %}
 {% if sa_reverse_order %}
-	{% set textleft = 'flex-row-reverse' %}
+	{% set textleft = ' flex-row-reverse' %}
 {% endif %}
 
 {% set container_class_string = '' %}
 {% if paragraph.sa_width.value is not empty %}
-	{% set container_class_string = paragraph.sa_width.value %}
+	{% set container_class_string = ' ' ~ paragraph.sa_width.value %}
 {% endif %}
 
 {% set col_class_string = '' %}
 {% if paragraph.sa_col.value is not empty %}
-	{% set col_class_string = paragraph.sa_col.value %}
+	{% set col_class_string = ' ' ~ paragraph.sa_col.value %}
 {% endif %}
 
 {% set margin_class_string = '' %}
 {% if paragraph.sa_margin.value is not empty %}
-	{% set margin_class_string = paragraph.sa_margin.value %}
+	{% set margin_class_string = ' ' ~ paragraph.sa_margin.value %}
 {% endif %}
 
 {% set padding_class_string = '' %}
 {% if paragraph.sa_padding.value is not empty %}
-	{% set padding_class_string = paragraph.sa_padding.value %}
+	{% set padding_class_string = ' ' ~ paragraph.sa_padding.value %}
 {% endif %}
 
 {% set bg_class_string = '' %}
 {% if paragraph.sa_background.value is not empty %}
-	{% set bg_class_string = paragraph.sa_background.value %}
+	{% set bg_class_string = ' ' ~ paragraph.sa_background.value %}
 {% endif %}
-
 {% block paragraph %}
 	<div{{attributes.addClass(classes)}}>
-		<div class="{{ container_class_string }} {{ bg_class_string }} {{ margin_class_string }} {{ padding_class_string }}">
-			<div class="row justify-content-center {{ textleft }}">
+		<div class="{{ container_class_string }}{{ bg_class_string }}{{ margin_class_string }}{{ padding_class_string }}">
+			<div class="row justify-content-center{{ textleft }}">
 				{% if col_class_string is not empty %}
 					<div class="{{ col_class_string }}">
 						<div class="row">
