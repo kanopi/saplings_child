@@ -80,7 +80,6 @@
 {% if paragraph.sa_background.value is not empty %}
 	{% set bg_class_string = ' ' ~ paragraph.sa_background.value %}
 {% endif %}
-
 {% block paragraph %}
 	<div{{attributes.addClass(classes)}}>
 		<div class="{{ container_class_string }}{{ bg_class_string }}{{ margin_class_string }}{{ padding_class_string }}">
