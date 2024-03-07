@@ -36,6 +36,13 @@ simple_card:
       preview: "col-md-8"
       allow_expose: true
       allow_token: true
+    height:
+      type: "boolean"
+      label: "Set the height of the card to be 100%"
+      description: "Add class of h-100 to card"
+      preview: false
+      allow_expose: true
+      allow_token: true
   fields:
     image:
       type: "render"
