@@ -86,7 +86,8 @@
 			<div class="row justify-content-center{{ textleft }}">
 				{% if col_class_string is not empty %}
 					<div class="{{ col_class_string }}">
-						<div class="row">
+						<div class="row justify-content-center{{ textleft }}">
+
 						{% endif %}
 						<div class="align-self-center col-md-6">
 							{% if content.sa_media is not empty %}
@@ -109,3 +110,4 @@
 		</div>
 	</div>
 {% endblock paragraph %}
+
