@@ -8,6 +8,11 @@
 .container-fluid {
   padding-left: 0 !important;
   padding-right: 0 !important;
+
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
 }
 
 // Main menu.
