@@ -5,6 +5,7 @@ core_version_requirement: ^10
 base theme: ui_suite_bootstrap
 
 regions:
+  banner: "Banner"
   navigation: "Navigation"
   navigation_collapsible: "Navigation (Collapsible)"
   header: "Top Bar"

@@ -45,6 +45,17 @@
  * @ingroup themeable
  */
 #}
+{% if page.banner %}
+  {% block banner %}
+    <div class="navbar navbar-expand-lg navbar-dark bg-primary" id="banner">
+      <div class="container">
+        <div class="row w-100">
+          {{ page.banner }}
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+{% endif %}
 {# Navbar #}
 {% if page.navigation or page.navigation_collapsible %}
   {% block navbar %}
