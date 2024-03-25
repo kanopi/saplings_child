@@ -45,44 +45,48 @@
  * @ingroup themeable
  */
 #}
-{% if page.banner %}
-  {% block banner %}
-    <div class="navbar navbar-expand-lg navbar-dark bg-primary" id="banner">
-      <div class="container">
-        <div class="row w-100">
-          {{ page.banner }}
-        </div>
-      </div>
-    </div>
-  {% endblock %}
-{% endif %}
-{# Navbar #}
-{% if page.navigation or page.navigation_collapsible %}
-  {% block navbar %}
-    <div class="bg-light p-2" id="navbar">
-      {{ pattern('navbar', {
-        placement: 'default',
-        toggler_position: 'end',
-        toggle_action: 'collapse',
-        navigation: page.navigation,
-        navigation_collapsible: page.navigation_collapsible,
-      }, 'expand_lg') }}
-    </div>
-  {% endblock %}
-{% endif %}
-{# Header #}
-{% if is_admin %}
-  {% if page.header %}
-    {% block header %}
-      <div class="{{ container }}" id="header">
-        <div class="row">
-          <div class="col col-12 mb-4 pb-1">
-            {{ page.header }}
+{% if page.banner or page.navigation or page.navigation_collapsible or page.header %}
+  <header>
+    {% if page.banner %}
+      {% block banner %}
+        <div class="navbar navbar-expand-lg navbar-dark bg-primary" id="banner">
+          <div class="container">
+            <div class="row w-100">
+              {{ page.banner }}
+            </div>
           </div>
         </div>
-      </div>
-    {% endblock %}
-  {% endif %}
+      {% endblock %}
+    {% endif %}
+    {# Navbar #}
+    {% if page.navigation or page.navigation_collapsible %}
+      {% block navbar %}
+        <div class="bg-light p-2" id="navbar">
+          {{ pattern('navbar', {
+            placement: 'default',
+            toggler_position: 'end',
+            toggle_action: 'collapse',
+            navigation: page.navigation,
+            navigation_collapsible: page.navigation_collapsible,
+          }, 'expand_lg') }}
+        </div>
+      {% endblock %}
+    {% endif %}
+    {# Header #}
+    {% if is_admin %}
+      {% if page.header %}
+        {% block header %}
+            <div class="{{ container }}" id="header">
+              <div class="row">
+                <div class="col col-12 mb-4 pb-1">
+                  {{ page.header }}
+                </div>
+              </div>
+            </div>
+        {% endblock %}
+      {% endif %}
+    {% endif %}
+  </header>
 {% endif %}
 {# Highlighted #}
 {% if page.highlighted %}
