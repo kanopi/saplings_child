@@ -1,6 +1,6 @@
 sa-navbar:
   label: "Sa Navbar"
-  description: "Powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin."
+  description: "Powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin. Allows the parent item to be a link and then have a dropdown indicator to access child menu items."
   links:
     - 'https://getbootstrap.com/docs/5.3/components/navbar/'
   category: "Navbar"
