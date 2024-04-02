@@ -1,0 +1,8 @@
+{% extends "paragraph.html.twig" %}
+{% block content %}
+	{{ content.sa_header }}
+	{{ content.sa_description }}
+	<div itemscope itemtype="https://schema.org/FAQPage">
+		{{ content.sa_faq_item }}
+	</div>
+{% endblock %}
