@@ -57,13 +57,13 @@
 {% endif %}
 
 {% set container_class_string = '' %}
-{% if paragraph.sa_width.value is not empty %}
-  {% set container_class_string = ' ' ~ paragraph.sa_width.value %}
+{% if paragraph.sa_container.value is not empty %}
+  {% set container_class_string = ' ' ~ paragraph.sa_container.value %}
 {% endif %}
 
-{% set col_class_string = '' %}
-{% if paragraph.sa_col.value is not empty %}
-  {% set col_class_string = ' ' ~ paragraph.sa_col.value %}
+{% set width_class_string = '' %}
+{% if paragraph.sa_width.value is not empty %}
+  {% set width_class_string = ' ' ~ paragraph.sa_width.value %}
 {% endif %}
 
 {% set margin_class_string = '' %}
@@ -84,8 +84,8 @@
   <div{{attributes.addClass(classes)}}>
     <div class="{{ container_class_string }}{{ bg_class_string }}{{ margin_class_string }}{{ padding_class_string }}">
       <div class="row justify-content-center{{ textleft }}">
-        {% if col_class_string is not empty %}
-          <div class="{{ col_class_string }}">
+        {% if width_class_string is not empty %}
+          <div class="{{ width_class_string }}">
             <div class="row justify-content-center{{ textleft }}">
             {% endif %}
             <div class="align-self-center col-md-6">
@@ -101,7 +101,7 @@
                 {{ content.sa_description }}
               {% endif %}
             </div>
-            {% if col_class_string is not empty %}
+            {% if width_class_string is not empty %}
             </div>
           </div>
         {% endif %}
