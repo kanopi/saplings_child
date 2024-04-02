@@ -32,3 +32,6 @@ libraries-extend:
     - saplings_child/bootstrap
   ui_suite_bootstrap/form:
     - saplings_child/form
+
+libraries:
+  - menu_bootstrap_icon/cdn
