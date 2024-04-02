@@ -80,8 +80,10 @@
         <div class="{{ col_class_string }}">
     {% endif %}
       {% block content %}
+      {{ content.sa_header }}
+      {{ content.sa_description }}
         <div itemscope itemtype="https://schema.org/FAQPage">
-          {{ content }}
+          {{ content.sa_faq_item }}
         </div>
       {% endblock %}
     {% if paragraph.sa_col.value is not empty %}
