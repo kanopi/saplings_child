@@ -102,7 +102,7 @@
     <h1 class="visually-hidden">{{ label }}</h1>
   {% else %}
     {# Prints a nice image header. #}
-    {% if content.sa_featured_image|render|striptags|trim is not empty %}
+    {% if content.sa_featured_image is not empty %}
       <div class="page-header{% if header_position is not empty %} {{ header_position }}{% endif %}"{% if overlay_level is not empty %} data-overlay="{{ overlay_level }}{% endif %}">
         {{ content.sa_featured_image }}
         <div class="page-header__meta">
@@ -121,11 +121,11 @@
               </div>
             {% endif %} #}
 
-    {% if content.sa_featured_image|render|striptags|trim is not empty %}
+    {% if content.sa_featured_image is not empty %}
         </div> <!-- / page-header__meta -->
     {% endif %}
         <div class="field--name-sa-description">{{ content.sa_description }}</div>
-    {% if content.sa_featured_image|render|striptags|trim is not empty %}
+    {% if content.sa_featured_image is not empty %}
       </div> <!-- / page-header -->
     {% else %}
           </div> <!-- / col -->
@@ -146,27 +146,27 @@
             {% endif %}
       </div>
     {% endif %}
-    {% if content.sa_register_link|render|striptags|trim is not empty %}
+    {% if content.sa_register_link is not empty %}
       <div class="field--name-sa-register-link mb-3">
         {{ content.sa_register_link }}
       </div>
     {% endif %}
-    {% if content.sa_location|render|striptags|trim is not empty %}
+    {% if content.sa_location is not empty %}
       <div class="field--name-sa-location mb-3">
         {{ content.sa_location }}
       </div>
     {% endif %}
-    {% if content.sa_event_date|render|striptags|trim is not empty %}
+    {% if content.sa_event_date is not empty %}
       <div class="field--name-sa-event-date mb-3">
         {{ content.sa_event_date }}
       </div>
     {% endif %}
-    {% if content.sa_attendance_mode|render|striptags|trim is not empty %}
+    {% if content.sa_attendance_mode is not empty %}
       <div class="field--name-sa-attendance-mode mb-3">
         {{ content.sa_attendance_mode }}
       </div>
     {% endif %}
-    {% if content.sa_availability|render|striptags|trim is not empty %}
+    {% if content.sa_availability is not empty %}
       <div class="field--name-sa-availability mb-3">
         {{ content.sa_availability }}
       </div>
