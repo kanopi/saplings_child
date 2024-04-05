@@ -1,16 +1,3 @@
-/* Animated Statistics Paragraph */
-.animated-statistics {
-    display: flex;
-    gap: 2rem;
-}
-
-@media (max-width: 991.98px) {
-    .animated-statistics {
-        flex-direction: column;
-        gap: 3rem;
-    }
-}
- 
 /* Individual Stat */
 .stat_paragraph.animated {
     flex: 1;

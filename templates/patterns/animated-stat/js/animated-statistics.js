@@ -9,7 +9,7 @@
     Drupal.behaviors.animateStat = {
         attach: function (context) {
  
-          const elements = document.querySelectorAll('.paragraph--type--animated-statistics');
+          const elements = document.querySelectorAll('.stat_paragraph');
  
           elements.forEach(function(element) {
             const observer = new IntersectionObserver(entries => {
