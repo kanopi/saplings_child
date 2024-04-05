@@ -98,7 +98,7 @@
     <h1 class="visually-hidden">{{ label }}</h1>
   {% else %}
     {# Prints a nice image header. #}
-    {% if content.sa_featured_image is not empty %}
+    {% if content.sa_featured_image|render|striptags|trim is not empty %}
       <div class="page-header{% if header_position is not empty %} {{ header_position }}{% endif %}"{% if overlay_level is not empty %} data-overlay="{{ overlay_level }}{% endif %}">
         {{ content.sa_featured_image }}
         <div class="page-header__meta">
@@ -133,11 +133,11 @@
                 {{ content.sa_external_source }}
               </div>
             {% endif %}
-    {% if content.sa_featured_image is not empty %}
+    {% if content.sa_featured_image|render|striptags|trim is not empty %}
         </div> <!-- / page-header__meta -->
     {% endif %}
         <div class="field--name-sa-description">{{ content.sa_description }}</div>
-    {% if content.sa_featured_image is not empty %}
+    {% if content.sa_featured_image|render|striptags|trim is not empty %}
       </div> <!-- / page-header -->
     {% else %}
           </div> <!-- / col -->
