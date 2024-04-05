@@ -90,7 +90,11 @@
 
 {%
   set content_classes = [
-    'page-body'
+    'event-body',
+    'row',
+    'mt-3',
+    'container',
+    'mx-auto',
   ]
 %}
 <div{{ attributes.addClass(classes) }} role="main">
@@ -116,23 +120,7 @@
                 {{ node.published_at.value|date('F j, Y') }}
               </div>
             {% endif %} #}
-            {% if content.sa_author is not empty %}
-              <div class="field--name-sa-author">
-                <span class="fw-bold">By: </span>
-                {% if content.sa_author_url is not empty %}
-                  <a href="{{ content.sa_author_url|render|striptags|trim }}">
-                {% endif %}
-                {{ content.sa_author }}
-                {% if content.sa_author_url is not empty %}
-                </a>
-                {% endif %}
-              </div>
-            {% endif %}
-            {% if content.sa_external_source is not empty %}
-              <div class="field--name-sa-external-source">
-                {{ content.sa_external_source }}
-              </div>
-            {% endif %}
+
     {% if content.sa_featured_image[0] is not empty %}
         </div> <!-- / page-header__meta -->
     {% endif %}
@@ -146,6 +134,47 @@
     {% endif %}
   {% endif %}
   <div{{ content_attributes.addClass(content_classes) }}>
-    {{ content|without('published_at', 'sa_author', 'sa_author_url', 'sa_description', 'sa_hide_header', 'sa_external_source', 'sa_featured_image', 'sa_header_position', 'sa_overlay', ) }}
+   <div class="col-md-3 pt-3">
+   <h2>{{ 'Event Info'|t }}</h2>
+    {% if content.sa_cost is not empty %}
+      <div class="field--name-sa-cost mb-3">
+        {{ content.sa_cost }}
+            {% if content.sa_currency is not empty %}
+              <span class="field--name-sa-currency">
+                {{ content.sa_currency }}
+              </span>
+            {% endif %}
+      </div>
+    {% endif %}
+    {% if content.sa_register_link is not empty %}
+      <div class="field--name-sa-register-link mb-3">
+        {{ content.sa_register_link }}
+      </div>
+    {% endif %}
+    {% if content.sa_location is not empty %}
+      <div class="field--name-sa-location mb-3">
+        {{ content.sa_location }}
+      </div>
+    {% endif %}
+    {% if content.sa_event_date is not empty %}
+      <div class="field--name-sa-event-date mb-3">
+        {{ content.sa_event_date }}
+      </div>
+    {% endif %}
+    {% if content.sa_attendance_mode is not empty %}
+      <div class="field--name-sa-attendance-mode mb-3">
+        {{ content.sa_attendance_mode }}
+      </div>
+    {% endif %}
+    {% if content.sa_availability is not empty %}
+      <div class="field--name-sa-availability mb-3">
+        {{ content.sa_availability }}
+      </div>
+    {% endif %}
+   </div>
+   <div class="col-md-9">
+    {{ content|without('published_at', 'sa_location', 'sa_event_date', 'sa_register_link', 'sa_cost', 'sa_attendance_mode', 'sa_availability', 'sa_currency', 'sa_description', 'sa_hide_header', 'sa_featured_image', 'sa_header_position', 'sa_overlay', ) }}
+   </div>
+    
   </div>
 </div> <!-- / main -->
