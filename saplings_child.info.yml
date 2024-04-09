@@ -26,6 +26,8 @@ libraries-override:
     css:
       theme:
         /libraries/bootstrap/dist/css/bootstrap.min.css: false
+    js:
+        /libraries/bootstrap/dist/js/bootstrap.bundle.min.js: false
 
 libraries-extend:
   ui_suite_bootstrap/bootstrap:
