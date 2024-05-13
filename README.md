@@ -49,3 +49,16 @@ Follow these steps to set up and customize your subtheme:
 There is no backward compatibility policy in this example theme.
 
 Breaking change can happen at any moment.
+
+## Custom Styles needed for USCF Starter Sites
+
+There is one variable that isn't available via the UI Skins module that we
+will have to update via the theme file which is --bs-nav-link-font-size
+Change need which can be placed in the overrides.scss file
+
+   ```
+   .menu--banner .nav-link {
+   --bs-nav-link-font-size: 0.875rem;
+   }
+
+   ```
