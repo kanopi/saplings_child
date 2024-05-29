@@ -72,36 +72,6 @@
   {% set bg_class_string = ' ' ~ paragraph.sa_background.value %}
 {% endif %}
 
-{% set col_gutters = '' %}
-{% if paragraph.sa_column_gutters.value is not empty %}
-  {% set col_gutters = paragraph.sa_column_gutters.value %}
-{% endif %}
-
-{% set col_desktop = '' %}
-{% if paragraph.sa_columns_desktop.value is not empty %}
-  {% set col_desktop = paragraph.sa_columns_desktop.value %}
-{% endif %}
-
-{% set col_tablet = '' %}
-{% if paragraph.sa_columns_tablet.value is not empty %}
-  {% set col_tablet = paragraph.sa_columns_tablet.value %}
-{% endif %}
-
-{% set col_mobile = '' %}
-{% if paragraph.sa_columns_mobile.value is not empty %}
-  {% set col_mobile = paragraph.sa_columns_mobile.value %}
-{% endif %}
-
-{% set justify = '' %}
-{% if paragraph.sa_justify_content_horizontal.value is not empty %}
-  {% set justify = ' ' ~ paragraph.sa_justify_content_horizontal.value %}
-{% endif %}
-
-{% set align = '' %}
-{% if paragraph.sa_align_items_vertically.value is not empty %}
-  {% set align = ' ' ~ paragraph.sa_align_items_vertically.value %}
-{% endif %}
-
 {% block paragraph %}
 <div{{ attributes.addClass(classes) }}>
   <div class="{{ container_class_string }}{{ bg_class_string }}{{ margin_class_string }}{{ padding_class_string }}">
@@ -109,20 +79,13 @@
       <div class="row justify-content-center">
         <div class="{{ width_class_string }}">
     {% endif %}
+    <div class="row">
+      <div class="col">
       {% block content %}
-      <div class="row">
-        <div class="col">
-          {{ content|without('sa_column_items') }}
-          </div>
-        </div>
-          <div class="row{{ justify }}{{ align }} g-{{col_gutters}} row-cols-{{col_mobile}} row-cols-md-{{col_tablet}} row-cols-lg-{{col_desktop}}">
-          {% for key,value in paragraph.sa_column_items %}
-            <div class="col">
-              {{ content.sa_column_items[key] }}
-            </div>
-          {% endfor %}
-          </div>
+          {{ content }}
       {% endblock %}
+      </div>
+    </div>
     {% if paragraph.sa_width.value is not empty %}
         </div>
       </div>

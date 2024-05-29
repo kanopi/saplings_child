@@ -99,7 +99,7 @@
   {% else %}
     {# Prints a nice image header. #}
     {% if content.sa_featured_image[0] is not empty %}
-      <div class="page-header{% if header_position is not empty %} {{ header_position }}{% endif %}"{% if overlay_level is not empty %} data-overlay="{{ overlay_level }}{% endif %}">
+      <div class="page-header mb-lg-0 mb-3 {% if header_position is not empty %} {{ header_position }}{% endif %}"{% if overlay_level is not empty %} data-overlay="{{ overlay_level }}{% endif %}">
         {{ content.sa_featured_image }}
         <div class="page-header__meta">
     {# If there is no image, print a simple header. #}
