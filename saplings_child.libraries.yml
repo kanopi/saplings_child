@@ -12,6 +12,3 @@ am:
   js:
     dist/js/js/am.js: { minified: true }
 
-tabs:
-  js:
-    assets/js/tabs.js: { minified: false }
