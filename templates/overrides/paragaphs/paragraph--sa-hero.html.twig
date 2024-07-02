@@ -38,12 +38,17 @@
  * @ingroup themeable
  */
 #}
+{% if paragraph.field_justify_content_vertically.value is not empty %}
+  {% set align = paragraph.field_justify_content_vertically.value %}
+{% endif %}
+
 {%
   set classes = [
     'paragraph',
     'paragraph--type--' ~ paragraph.bundle|clean_class,
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-    not paragraph.isPublished() ? 'paragraph--unpublished'
+    not paragraph.isPublished() ? 'paragraph--unpublished',
+    align
   ]
 %}
 
@@ -77,22 +82,37 @@
   {% set align = ' ' ~ paragraph.sa_align_items_vertically.value %}
 {% endif %}
 
-{% block paragraph %}
-<div{{ attributes.addClass(classes) }}>
-  <div class="{{ container_class_string }}{{ margin_class_string }}{{ padding_class_string }}">
-    {% if paragraph.sa_width.value is not empty %}
-      <div class="row justify-content-center">
-        <div class="{{ width_class_string }}">
+{# Renders Overlay field. #}
+{# Sets data attibute value from values in database. #}
+{% if paragraph.sa_overlay.value is not empty %}
+  {% set overlay_level = paragraph.sa_overlay.value %}
+{% endif %}
+
+{% block paragraph %}  
+<div{{ attributes.addClass(classes) }}
+    {% if overlay_level %}
+        data-overlay="{{ overlay_level }}"
     {% endif %}
-      {% block content %}
-        <div class="row{{ justify }}{{ align }}">
-          {{ content.sa_hero_content }}
+    >
+    {% if paragraph.sa_hero_background.value is not empty %}
+        <div class="hero-image">
+            {{ content.sa_hero_background }}
         </div>
-      {% endblock %}
-    {% if paragraph.sa_width.value is not empty %}
-        </div>
-      </div>
     {% endif %}
-  </div>
+    <div class="{{ container_class_string }}{{ margin_class_string }}{{ padding_class_string }} ">
+        {% if paragraph.sa_width.value is not empty %}
+        <div class="row {{ justify }}">
+            <div class="{{ width_class_string }}">
+        {% endif %}
+        {% block content %}
+          <div class="hero-content">
+            {{ content.sa_hero_content }}
+          </div>
+        {% endblock %}
+        {% if paragraph.sa_width.value is not empty %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
 </div>
 {% endblock paragraph %}
