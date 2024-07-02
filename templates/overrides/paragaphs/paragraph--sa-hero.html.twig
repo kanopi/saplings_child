@@ -42,13 +42,18 @@
   {% set align = paragraph.field_justify_content_vertically.value %}
 {% endif %}
 
+{% set hero_media = content.sa_hero_background[0]['#media'].bundle.value[0].target_id %}
+
 {%
   set classes = [
     'paragraph',
     'paragraph--type--' ~ paragraph.bundle|clean_class,
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
     not paragraph.isPublished() ? 'paragraph--unpublished',
-    align
+    align,
+    hero_media,
+    'bg-primary',
+    'bg-lg-none'
   ]
 %}
 

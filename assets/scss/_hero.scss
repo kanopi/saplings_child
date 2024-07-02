@@ -1,60 +1,79 @@
 .paragraph--type--sa-hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 55vh;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  min-height: 55vh;
 
-    .hero-image {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
+  .hero-image {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
 
-    /* Overlay. */
-    &[data-overlay] {
-    .hero-content {
-      padding: 20px;
-      position: relative;
-      color: white;
+      @include media-breakpoint-down(lg) {
+          position: relative;
+      }
+  }
 
-      // Set all inner content to be higher z-index than before.
-      .field--items {
+  &.remote_video {
+      @include media-breakpoint-up(lg) {
+          aspect-ratio: 16 / 9;
+      }
+  }
+
+  @include media-breakpoint-down(lg) {
+      .hero-content {
+          color: white;
+      }
+  }
+
+  @include media-breakpoint-up(lg) {
+      /* Overlay. */
+      &[data-overlay] {
+      .hero-content {
+        padding: 20px;
         position: relative;
-        z-index: 2;
-      }
-
-      &:before {
-        background: #252525 none repeat scroll 0 0;
-        content: "";
-        display: block;
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: 0;
-      }
-
-      &--overlay-invert {
+        color: white;
+  
+        // Set all inner content to be higher z-index than before.
+        .field--items {
+          position: relative;
+          z-index: 2;
+        }
+  
         &:before {
-          background: #fff none repeat scroll 0 0;
+          background: #252525 none repeat scroll 0 0;
+          content: "";
+          display: block;
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+          z-index: 0;
+        }
+  
+        &--overlay-invert {
+          &:before {
+            background: #fff none repeat scroll 0 0;
+          }
         }
       }
-    }
-    // Loops 1 - 9 and adds opacity $i x 0.1
-    @for $i from 1 through 9 {
-      &[data-overlay="#{$i}"] {
-        .hero-content {
-          &:before {
-            opacity: calc($i * 0.1);
+      // Loops 1 - 9 and adds opacity $i x 0.1
+      @for $i from 1 through 9 {
+        &[data-overlay="#{$i}"] {
+          .hero-content {
+            &:before {
+              opacity: calc($i * 0.1);
+            }
           }
         }
       }
     }
   }
+  
 }
