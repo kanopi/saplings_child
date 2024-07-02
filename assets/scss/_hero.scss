@@ -10,6 +10,27 @@
       min-height: 55vh;
   }
 
+  #hero-video-control {
+      background-color: unset;
+      border: 0;
+
+      &.play {
+          .bi-pause {
+              display: none;
+          }
+      }
+
+      &.pause {
+          .bi-play {
+              display: none;
+          }
+      }
+
+      .bi {
+          font-size: 1.5rem;
+      }
+  }    
+
   .hero-image {
       width: 100%;
       height: 100%;
@@ -22,15 +43,24 @@
       }
   }
 
-  &.remote_video {
+  &.video {
       @include media-breakpoint-up(lg) {
           aspect-ratio: 16 / 9;
+      }
+
+      video {
+          height: 100%;
+          width: 100%;
       }
   }
 
   @include media-breakpoint-down(lg) {
       .hero-content {
           color: white;
+
+          .bi {
+              color: white;
+          }
       }
   }
 
@@ -41,9 +71,13 @@
         padding: 20px;
         position: relative;
         color: white;
+
+        .bi {
+          color: white;
+        }
   
         // Set all inner content to be higher z-index than before.
-        .field--items {
+        .text-wrapper, #hero-video-control {
           position: relative;
           z-index: 2;
         }
@@ -78,5 +112,4 @@
       }
     }
   }
-  
 }

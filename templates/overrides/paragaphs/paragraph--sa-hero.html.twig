@@ -38,6 +38,9 @@
  * @ingroup themeable
  */
 #}
+
+{{ attach_library('saplings_child/hero-video') }}
+
 {% if paragraph.field_justify_content_vertically.value is not empty %}
   {% set align = paragraph.field_justify_content_vertically.value %}
 {% endif %}
@@ -111,7 +114,16 @@
         {% endif %}
         {% block content %}
           <div class="hero-content">
-            {{ content.sa_hero_content }}
+            <div class="text-wrapper">
+              {{ content.sa_hero_content }}
+            </div>
+            {% if hero_media == 'video' %}
+              <button id="hero-video-control" class="pause p-0" type="button">
+                <i class="bi bi-pause"></i>
+                <i class="bi bi-play"></i>
+                <span class="visually-hidden">Play or Pause</span>
+              </button>
+            {% endif %}
           </div>
         {% endblock %}
         {% if paragraph.sa_width.value is not empty %}
