@@ -59,6 +59,7 @@
         {{ content.sa_description }}
       </div>
     </div>
+    {{ content|without('sa_header', 'sa_description' )  }}
   </div>
   {% endblock %}
 </div>
