@@ -12,3 +12,6 @@ am:
   js:
     dist/js/js/am.js: { minified: true }
 
+hero-video:
+  js:
+    dist/js/js/_hero.js: { minified: true }
