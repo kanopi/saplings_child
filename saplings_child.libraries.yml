@@ -11,4 +11,3 @@ form:
 am:
   js:
     dist/js/js/am.js: { minified: true }
-
