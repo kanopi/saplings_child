@@ -18,6 +18,11 @@
 // Main menu.
 #block-saplings-child-mainnavigation {
   width: 100%;
+  display: flex;
+
+  @include media-breakpoint-up(lg) {
+    justify-content: end;
+  }
 }
 
 // Main menu align right.
@@ -28,7 +33,7 @@
 }
 
 // Unset align right on mobile.
-@include media-breakpoint-down(md) {
+@include media-breakpoint-down(lg) {
   .navbar-expand-lg .navbar-nav {
     flex-direction: column;
     justify-content: start;
@@ -87,4 +92,12 @@ lite-youtube {
   border-radius: 3px;
   border: 1px solid #000;
   cursor: pointer;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-right {
+  text-align: end;
 }

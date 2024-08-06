@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.search
+  module:
+    - block_class
+    - configurable_views_filter_block
+    - system
+  theme:
+    - saplings_child
+third_party_settings:
+  block_class:
+    classes: row
+    replaced_id: searchForm
+id: saplings_child_exposedformsearchpage_1
+theme: saplings_child
+region: search_filters
+weight: -7
+provider: null
+plugin: 'configurable_views_filter_block_block:search-page_1'
+settings:
+  id: 'configurable_views_filter_block_block:search-page_1'
+  label: ''
+  label_display: '0'
+  provider: configurable_views_filter_block
+  visible_filters:
+    search_api_fulltext: search_api_fulltext
+  no_groups: false
+  no_reset: false
+  no_sort: false
+  no_pager: false
+  views_label: ''
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /search

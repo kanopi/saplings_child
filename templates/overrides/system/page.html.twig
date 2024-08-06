@@ -106,6 +106,14 @@
     </div>
   {% endblock %}
 {% endif %}
+{# Search on Page #}
+{% if page.search_filters %}
+  {% block search_filters %}
+  <div class="container" id="search">
+    {{ page.search_filters }}
+    </div>
+  {% endblock %}
+{% endif %}
 {# Content #}
 {% block content %}
   <main class="container-fluid" id="main-content">
