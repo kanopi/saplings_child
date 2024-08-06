@@ -15,3 +15,7 @@ am:
 hero-video:
   js:
     dist/js/js/_hero.js: { minified: true }
+
+bs5-lightbox:
+  js: 
+    https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js: { type: external, minified: true }
