@@ -12,6 +12,7 @@ regions:
   highlighted: "Highlighted"
   help: "Help"
   content: "Content"
+  search_filters: "Search Filters"
   sidebar_first: "Primary"
   sidebar_second: "Secondary"
   footer: "Footer"
