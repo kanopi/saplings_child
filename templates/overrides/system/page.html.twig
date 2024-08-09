@@ -76,13 +76,13 @@
     {% if is_admin %}
       {% if page.header %}
         {% block header %}
-            <div class="{{ container }}" id="header">
-              <div class="row">
-                <div class="col col-12 mb-4 pb-1">
-                  {{ page.header }}
-                </div>
+          <div class="{{ container }}" id="header">
+            <div class="row">
+              <div class="col col-12 mb-4 pb-1">
+                {{ page.header }}
               </div>
             </div>
+          </div>
         {% endblock %}
       {% endif %}
     {% endif %}
@@ -106,20 +106,50 @@
     </div>
   {% endblock %}
 {% endif %}
-{# Search on Page #}
-{% if page.search_filters %}
-  {% block search_filters %}
-  <div class="container" id="search">
-    {{ page.search_filters }}
+{% if page.pre_content %}
+  {% block pre_content %}
+    <div class="container mt-3 mb-3" id="precontent">
+      {{ page.pre_content }}
     </div>
   {% endblock %}
 {% endif %}
+{# Hero #}
+{% if page.hero %}
+  {% block hero %}
+    {{ page.hero }}
+  {% endblock %}
+{% endif %}
 {# Content #}
+{%
+  set content_classes = [
+  page.sidebar_first ? 'col col-12 col-md-10',
+  page.sidebar_first is empty ? 'col col-12'
+]
+%}
 {% block content %}
-  <main class="container-fluid" id="main-content">
-    <div class="row">
-     {{ page.content }}
-   </div>
+  {# Sidebar First #}
+  {% if page.sidebar_first %}
+    <main class="container" id="main-content">
+      <div class="row">
+        {% block sidebar_first %}
+          <aside class="col col-12 col-md-2 mt-3 mt-md-5" role="complementary">
+            {{ page.sidebar_first }}
+          </aside>
+        {% endblock %}
+      {% else %}
+        <main class="container-fluid" id="main-content">
+          <div class="row">
+          {% endif %}
+          {% if page.sidebar_first %}
+            <section{{content_attributes.addClass(content_classes)}}>
+            {% endif %}
+            {{ page.content }}
+            {% if page.sidebar_first %}
+            </div>
+          </div>
+        </section>
+      {% endif %}
+    </div>
   </main>
 {% endblock %}
 {% if page.footer %}

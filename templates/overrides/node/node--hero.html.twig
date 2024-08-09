@@ -88,12 +88,7 @@
   ]
 %}
 
-{%
-  set content_classes = [
-    'page-body'
-  ]
-%}
-<div{{ attributes.addClass(classes) }} role="main">
+<header{{ attributes.addClass(classes) }}>
   {% if content.sa_hide_header[0]["#markup"] == 1 %}
     <h1 class="visually-hidden">{{ label }}</h1>
   {% else %}
@@ -105,17 +100,17 @@
     {# If there is no image, print a simple header. #}
     {% else %}
       <div class="container">
-        <div class="row">
+        <header class="row">
           <div class="col col-12">
     {% endif %}
             {{ title_prefix }}
             <h1>{{ label }}</h1>
             {{ title_suffix }}
-            {# {% if node.bundle == 'sa_post' and node.isPublished() %}
+            {% if node.bundle == 'sa_post'%}
               <div class="field--name-published_at">
                 {{ node.published_at.value|date('F j, Y') }}
               </div>
-            {% endif %} #}
+            {% endif %}
             {% if content.sa_author is not empty %}
               <div class="field--name-sa-author">
                 <span class="fw-bold">By: </span>
@@ -138,14 +133,7 @@
     {% endif %}
         <div class="field--name-sa-description">{{ content.sa_description }}</div>
     {% if content.sa_featured_image[0] is not empty %}
-      </div> <!-- / page-header -->
+      </header> <!-- / page-header -->
     {% else %}
-          </div> <!-- / col -->
-        </div> <!-- / row -->
-      </div> <!-- / container -->
     {% endif %}
   {% endif %}
-  <div{{ content_attributes.addClass(content_classes) }}>
-    {{ content|without('published_at', 'sa_author', 'sa_author_url', 'sa_description', 'sa_hide_header', 'sa_external_source', 'sa_featured_image', 'sa_header_position', 'sa_overlay', ) }}
-  </div>
-</div> <!-- / main -->

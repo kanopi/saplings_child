@@ -14,9 +14,7 @@
  * @ingroup templates
  */
 #}
-<button type="button" aria-label="Search" aria-labelledby="Search" class="btn search" data-bs-toggle="modal" data-bs-target="#searchForm">
-  <i class="bi bi-search" aria-hidden="true"></i>
-</button>
+<button type="button" aria-label="Search" aria-labelledby="Search" class="btn search" data-bs-toggle="modal" data-bs-target="#searchForm"><i class="bi bi-search" aria-hidden="true"></i></button>
 <div class="modal fade" id="searchForm" tabindex="-1" aria-labelledby="searchForm" aria-modal="true" role="dialog" data-bs-backdrop="false">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
@@ -25,7 +23,7 @@
       </div>
       <div class="modal-body">
         {% block content %}
-          {{ content }}
+        {{ content }}
         {% endblock %}
       </div>
     </div>

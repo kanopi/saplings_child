@@ -9,14 +9,10 @@ dependencies:
     - system
   theme:
     - saplings_child
-third_party_settings:
-  block_class:
-    classes: row
-    replaced_id: searchForm
 id: saplings_child_exposedformsearchpage_1
 theme: saplings_child
-region: search_filters
-weight: -7
+region: pre_content
+weight: -8
 provider: null
 plugin: 'configurable_views_filter_block_block:search-page_1'
 settings:
@@ -26,6 +22,7 @@ settings:
   provider: configurable_views_filter_block
   visible_filters:
     search_api_fulltext: search_api_fulltext
+    type: type
   no_groups: false
   no_reset: false
   no_sort: false

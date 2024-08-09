@@ -6,12 +6,12 @@
 
 // Make sure container fluid is edge to edge.
 .container-fluid {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  padding-inline-start: 0 !important;
+  padding-inline-end: 0 !important;
 
   .row {
-    margin-right: 0;
-    margin-left: 0;
+    margin-inline-end: 0;
+    margin-inline-start: 0;
   }
 }
 
