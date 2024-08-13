@@ -65,11 +65,14 @@
   }
 
   @include media-breakpoint-up(lg) {
+      .hero-content {
+        position: relative;
+      }
+
       /* Overlay. */
       &[data-overlay] {
       .hero-content {
         padding: 20px;
-        position: relative;
         color: white;
 
         .bi {
