@@ -68,31 +68,72 @@
  * @ingroup themeable
  */
 #}
+
+{% set header_position = '' %}
+{% if content.sa_header_position is not empty %}
+  {% set header_position = content.sa_header_position|render|striptags|trim %}
+{% endif %}
+
+{% set overlay_level = '' %}
+{% if content.sa_overlay is not empty %}
+  {% set overlay_level = content.sa_overlay|render|striptags|trim %}
+{% endif %}
+
 {%
   set classes = [
     node.bundle|clean_class,
     node.isPromoted() ? 'is-promoted',
     node.isSticky() ? 'is-sticky',
-    view_mode ? view_mode|clean_class,
-    'clearfix p-0',
+    'container-fluid',
   ]
 %}
-<article{{ attributes.addClass(classes) }}>
-  {{ title_prefix }}
-  {{ title_suffix }}
 
-  {% if display_submitted %}
-    <footer>
-      {{ author_picture }}
-      <div{{ author_attributes }}>
-        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
-        {{ metadata }}
-      </div>
-    </footer>
+<header{{ attributes.addClass(classes) }}>
+  {% if content.sa_hide_header[0]["#markup"] == 1 %}
+    <h1 class="visually-hidden">{{ label }}</h1>
+  {% else %}
+    {# Prints a nice image header. #}
+    {% if content.sa_featured_image[0] is not empty %}
+      <div class="page-header mb-lg-0 mb-3 {% if header_position is not empty %} {{ header_position }}{% endif %}"{% if overlay_level is not empty %} data-overlay="{{ overlay_level }}{% endif %}">
+        {{ content.sa_featured_image }}
+        <div class="page-header__meta">
+    {# If there is no image, print a simple header. #}
+    {% else %}
+      <div class="container">
+        <header class="row">
+          <div class="col col-12">
+    {% endif %}
+            {{ title_prefix }}
+            <h1>{{ label }}</h1>
+            {{ title_suffix }}
+            {% if node.bundle == 'sa_post'%}
+              <div class="field--name-published_at">
+                {{ node.published_at.value|date('F j, Y') }}
+              </div>
+            {% endif %}
+            {% if content.sa_author is not empty %}
+              <div class="field--name-sa-author">
+                <span class="fw-bold">By: </span>
+                {% if content.sa_author_url is not empty %}
+                  <a href="{{ content.sa_author_url|render|striptags|trim }}">
+                {% endif %}
+                {{ content.sa_author }}
+                {% if content.sa_author_url is not empty %}
+                </a>
+                {% endif %}
+              </div>
+            {% endif %}
+            {% if content.sa_external_source is not empty %}
+              <div class="field--name-sa-external-source">
+                {{ content.sa_external_source }}
+              </div>
+            {% endif %}
+    {% if content.sa_featured_image[0] is not empty %}
+        </div> <!-- / page-header__meta -->
+    {% endif %}
+        <div class="field--name-sa-description">{{ content.sa_description }}</div>
+    {% if content.sa_featured_image[0] is not empty %}
+      </header> <!-- / page-header -->
+    {% else %}
+    {% endif %}
   {% endif %}
-
-  <div{{ content_attributes }}>
-    {{ content }}
-  </div>
-
-</article>
