@@ -49,6 +49,11 @@
   ]
 %}
 
+{% set container_class_string = 'container' %}
+{% if paragraph.sa_container.value is not empty %}
+  {% set container_class_string = ' ' ~ paragraph.sa_container.value %}
+{% endif %}
+
 {% set margin_class_string = '' %}
 {% if paragraph.sa_margin.value is not empty %}
   {% set margin_class_string = ' ' ~ paragraph.sa_margin.value %}
@@ -63,7 +68,7 @@
 
 {% block paragraph %}
 <div{{ attributes.addClass(classes) }}>
-  <div class="{{ margin_class_string }}{{ padding_class_string }}">
+  <div class="{{ container_class_string }} {{ margin_class_string }}{{ padding_class_string }}">
     <div class="component-wrapper">
         <div class="
         {% if items_count != 1 and items_count != 3 %}
@@ -77,7 +82,7 @@
                 {{ content|without('field_media_multiple') }}
             {% endblock %}
         </div>
-        
+
     </div>
   </div>
 </div>
