@@ -70,6 +70,15 @@
     p {
         display: none;
     }
+    .media-collection-play {
+        --bs-btn-padding-x: 1.5rem;
+        font-size: 0;
+        &::before {
+            content: '\F4F5';
+            font-family: bootstrap-icons !important;
+            line-height: 1; 
+        }
+    }
 }
 
 .paragraph--type--media-collection {
