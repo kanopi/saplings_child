@@ -15,3 +15,11 @@ am:
 hero-video:
   js:
     dist/js/js/_hero.js: { minified: true }
+
+hero-video-youtube:
+  js: 
+    https://unpkg.com/youtube-background/jquery.youtube-background.min.js: { type: external, minified: true }
+
+fontawesome: 
+  js: 
+    https://kit.fontawesome.com/0a9b1aaff7.js: { type: external, minified: false }

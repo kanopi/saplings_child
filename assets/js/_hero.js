@@ -8,6 +8,9 @@
     */
     Drupal.behaviors.heroVideo = {
         attach: function (context) {
+          new VideoBackgrounds('[data-vbg]');
+
+          
           var video = document.querySelector('.paragraph--type--sa-hero video');
           var videoControl = document.querySelector('#hero-video-control');
 

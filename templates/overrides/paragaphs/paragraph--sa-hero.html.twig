@@ -40,9 +40,11 @@
 #}
 
 {{ attach_library('saplings_child/hero-video') }}
+{{ attach_library('saplings_child/hero-video-youtube') }}
+{{ attach_library('saplings_child/fontawesome') }}
 
-{% if paragraph.field_justify_content_vertically.value is not empty %}
-  {% set align = paragraph.field_justify_content_vertically.value %}
+{% if paragraph.sa_justify_content_vertically.value is not empty %}
+  {% set align = paragraph.sa_justify_content_vertically.value %}
 {% endif %}
 
 {% set hero_media = content.sa_hero_background[0]['#media'].bundle.value[0].target_id %}
@@ -97,15 +99,22 @@
 {% endif %}
 
 {% block paragraph %}  
+
 <div{{ attributes.addClass(classes) }}
     {% if overlay_level %}
         data-overlay="{{ overlay_level }}"
     {% endif %}
     >
     {% if paragraph.sa_hero_background.value is not empty %}
+      {% if content.sa_hero_background[0]['#media'].bundle.value.0.target_id == 'image' %}
         <div class="hero-image">
             {{ content.sa_hero_background }}
         </div>
+      {% elseif content.sa_hero_background[0]['#media'].bundle.value.0.target_id == 'remote_video' %}
+        <div class="hero-image" {% if content.field_include_pause_button[0]['#markup'] == '1' %}data-vbg-play-button="true"{% endif %} {% if content.field_include_mute_button[0]['#markup'] == '1' %}data-vbg-mute-button="true"{% endif %} data-vbg="{{ content.sa_hero_background[0]['#media'].field_media_oembed_video.0.value }}"></div>
+      {% else %}
+        <div class="hero-image" {% if content.field_include_pause_button[0]['#markup'] == '1' %}data-vbg-play-button="true"{% endif %} {% if content.field_include_mute_button[0]['#markup'] == '1' %}data-vbg-mute-button="true"{% endif %} data-vbg="{{ file_url(content.sa_hero_background[0]['#media'].field_media_video_file.entity.uri.value) }}"></div>
+      {% endif %}
     {% endif %}
     <div class="{{ container_class_string }}{{ margin_class_string }}{{ padding_class_string }} ">
         {% if paragraph.sa_width.value is not empty %}
@@ -117,13 +126,6 @@
             <div class="text-wrapper">
               {{ content.sa_hero_content }}
             </div>
-            {% if hero_media == 'video' %}
-              <button id="hero-video-control" class="pause p-0" type="button">
-                <i class="bi bi-pause"></i>
-                <i class="bi bi-play"></i>
-                <span class="visually-hidden">Play or Pause</span>
-              </button>
-            {% endif %}
           </div>
         {% endblock %}
         {% if paragraph.sa_width.value is not empty %}
