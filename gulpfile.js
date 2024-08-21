@@ -43,7 +43,7 @@ const paths = {
     },
     scripts: {
       src: "./assets/js/**/*.js",
-      dest: "dist/js",
+      dest: "dist",
     },
   },
 };
