@@ -101,3 +101,41 @@ lite-youtube {
 .text-align-right {
   text-align: end;
 }
+
+.paragraph--type--sa-testimonial {
+  .media {
+    max-width: 200px;
+    max-height: 200px;
+    
+    .field--item:has(> img[data-ratio="1:1"]) {
+      background: none;
+    }
+    img {
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  .quote-text {
+    font-size: 1.5rem;
+    margin-bottom: 1rem; 
+    &::before {
+      content: "“";
+      display: inline-block;
+    }
+
+    p {
+      display: inline;
+    }
+
+    &::after {
+      content: "”";
+      display: inline-block;
+    }
+  }
+
+  .testimonial-name {
+    font-weight: bold;
+  }
+}
