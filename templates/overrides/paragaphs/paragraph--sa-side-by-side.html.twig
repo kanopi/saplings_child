@@ -84,27 +84,30 @@
   <div{{attributes.addClass(classes)}}>
     <div class="{{ container_class_string }}{{ bg_class_string }}{{ margin_class_string }}{{ padding_class_string }}">
       <div class="row justify-content-center{{ textleft }}">
-        {% if width_class_string is not empty %}
-          <div class="{{ width_class_string }}">
-            <div class="row justify-content-center{{ textleft }}">
-            {% endif %}
-            <div class="align-self-center col-md-6 mt-3 mt-lg-0">
-              {% if content.sa_media is not empty %}
-                {{ content.sa_media }}
+        {% block content %}
+          {% if width_class_string is not empty %}
+            <div class="{{ width_class_string }}">
+              <div class="row justify-content-center{{ textleft }}">
               {% endif %}
+              <div class="align-self-center col-md-6 mt-3 mt-lg-0">
+                {% if content.sa_media is not empty %}
+                  {{ content.sa_media }}
+                  {{ content|without('sa_header', 'sa_description', 'sa_media', 'sa_margin', 'sa_padding', 'sa_width', 'sa_background', 'sa_container', 'sa_reverse_order' )  }}
+                {% endif %}
+              </div>
+              <div class="align-self-center col-md-6 mt-3 mt-lg-0">
+                {% if content.sa_header is not empty %}
+                  {{ content.sa_header }}
+                {% endif %}
+                {% if content.sa_description is not empty %}
+                  {{ content.sa_description }}
+                {% endif %}
+              </div>
+              {% if width_class_string is not empty %}
+              </div>
             </div>
-            <div class="align-self-center col-md-6 mt-3 mt-lg-0">
-              {% if content.sa_header is not empty %}
-                {{ content.sa_header }}
-              {% endif %}
-              {% if content.sa_description is not empty %}
-                {{ content.sa_description }}
-              {% endif %}
-            </div>
-            {% if width_class_string is not empty %}
-            </div>
-          </div>
-        {% endif %}
+          {% endif %}
+        {% endblock %}
       </div>
     </div>
   </div>

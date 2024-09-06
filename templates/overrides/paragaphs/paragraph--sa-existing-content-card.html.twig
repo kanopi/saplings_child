@@ -38,29 +38,9 @@
  * @ingroup themeable
  */
 #}
-{%
-  set classes = [
-    'paragraph',
-    'paragraph--type--' ~ paragraph.bundle|clean_class,
-    view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
-    not paragraph.isPublished() ? 'paragraph--unpublished'
-  ]
-%}
 
 {% block paragraph %}
-<div{{ attributes.addClass(classes) }}>
-  {% block content %}
-  <div class="faq" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-    <div class="faq--question" itemprop="name">
-      {{ content.sa_header }}
-    </div>
-    <div class="faq--answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-      <div class="faq--answer-text" itemprop="text">
-        {{ content.sa_description }}
-      </div>
-    </div>
-    {{ content|without('sa_header', 'sa_description' )  }}
-  </div>
-  {% endblock %}
-</div>
+    {% block content %}
+      {{ content }}
+    {% endblock %}
 {% endblock paragraph %}
