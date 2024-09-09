@@ -14,7 +14,7 @@ bs5-lightbox:
 
 hero-video:
   js:
-    dist/js/js/_hero.js: { minified: true }
+    dist/js/hero.js: { minified: true }
 
 fontawesome: 
   js: 
