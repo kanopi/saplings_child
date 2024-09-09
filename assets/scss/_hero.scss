@@ -6,9 +6,11 @@
   overflow: hidden;
   position: relative;
 
-  @include media-breakpoint-up(md) {
-      min-height: 55vh;
+  @include media-breakpoint-up(lg) {
+    min-height: 55vh;
   }
+  
+  
 
   #hero-video-control {
       background-color: unset;
@@ -37,9 +39,14 @@
       position: absolute;
       top: 0;
       left: 0;
+      aspect-ratio: 16 / 9;
 
       @include media-breakpoint-down(lg) {
-          position: relative;
+          position: relative !important;
+          iframe {
+            height: 100% !important;
+            width: 100% !important;
+          }
       }
   }
 
