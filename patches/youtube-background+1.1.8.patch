@@ -1,5 +1,5 @@
 diff --git a/node_modules/youtube-background/jquery.youtube-background.js b/node_modules/youtube-background/jquery.youtube-background.js
-index 771bfb1..37427c9 100644
+index 771bfb1..220e48e 100644
 --- a/node_modules/youtube-background/jquery.youtube-background.js
 +++ b/node_modules/youtube-background/jquery.youtube-background.js
 @@ -7,7 +7,7 @@
@@ -20,15 +20,36 @@ index 771bfb1..37427c9 100644
    }
    function generateActionButton(obj, props) {
      const btn = document.createElement("button");
-@@ -23,7 +23,7 @@
+@@ -23,7 +23,8 @@
      btn.innerHTML = props.innerHtml;
      btn.setAttribute("role", "switch");
      btn.firstChild.classList.add(props.stateChildClassNames[0]);
 -    btn.setAttribute("aria-pressed", !props.initialState);
 +    btn.setAttribute("aria-checked", !props.initialState);
++    btn.setAttribute("aria-label", props.ariaLabel);
      props.element = btn;
      if (obj.params[props.condition_parameter] === props.initialState) {
        buttonOn(props);
+@@ -267,7 +268,8 @@
+           stateClassName: "paused",
+           condition_parameter: "paused",
+           stateChildClassNames: ["fa-pause-circle", "fa-play-circle"],
+-          actions: ["play", "pause"]
++          actions: ["play", "pause"],
++          ariaLabel: "Toggle Play/Pause"
+         });
+       }
+       if (this.params["mute-button"]) {
+@@ -279,7 +281,8 @@
+           stateClassName: "muted",
+           condition_parameter: "muted",
+           stateChildClassNames: ["fa-volume-up", "fa-volume-mute"],
+-          actions: ["unmute", "mute"]
++          actions: ["unmute", "mute"],
++          ariaLabel: "Toggle Mute/Unmute"
+         });
+       }
+     }
 diff --git a/node_modules/youtube-background/jquery.youtube-background.js.map b/node_modules/youtube-background/jquery.youtube-background.js.map
 index 278c2e6..cfa39b3 100644
 --- a/node_modules/youtube-background/jquery.youtube-background.js.map
@@ -82,10 +103,10 @@ index 3023df2..25171fd 100644
  
    if (obj.params[props.condition_parameter] === props.initialState) {
 diff --git a/node_modules/youtube-background/src/lib/controls.js b/node_modules/youtube-background/src/lib/controls.js
-index 2de0f32..a973d53 100644
+index 2de0f32..73815f3 100644
 --- a/node_modules/youtube-background/src/lib/controls.js
 +++ b/node_modules/youtube-background/src/lib/controls.js
-@@ -263,10 +263,10 @@ export class PlayToggle {
+@@ -263,13 +263,14 @@ export class PlayToggle {
      if (!this.targetSelector) return;
      this.active = false;
  
@@ -99,7 +120,11 @@ index 2de0f32..a973d53 100644
      }
  
      this.element.setAttribute('role', 'switch');
-@@ -292,25 +292,25 @@ export class PlayToggle {
++    this.element.setAttribute('aria-label', 'Toggle Play/Pause');
+ 
+     this.targetElem = document.querySelector(this.targetSelector);
+     if (!this.targetElem) return;
+@@ -292,25 +293,25 @@ export class PlayToggle {
    onStateChange(event) {
      if (!this.vbgInstance) this.vbgInstance = event.detail;
      this.active = this.vbgInstance.currentState === 'playing' || this.vbgInstance.currentState === 'buffering';
@@ -129,7 +154,7 @@ index 2de0f32..a973d53 100644
    }
  
    onClick(event) {
-@@ -333,10 +333,10 @@ export class MuteToggle {
+@@ -333,13 +334,14 @@ export class MuteToggle {
        if (!this.targetSelector) return;
        this.active = false;
  
@@ -143,7 +168,11 @@ index 2de0f32..a973d53 100644
        }
  
        this.element.setAttribute('role', 'switch');
-@@ -358,26 +358,26 @@ export class MuteToggle {
++      this.element.setAttribute('aria-label', 'Toggle Mute/Unmute');
+ 
+       this.targetElem = document.querySelector(this.targetSelector);
+       if (!this.targetElem) return;
+@@ -358,26 +360,26 @@ export class MuteToggle {
      this.vbgInstance = event.detail;
      if (this.vbgInstance.params.muted) {
        this.active = true;
@@ -175,10 +204,10 @@ index 2de0f32..a973d53 100644
  
    onClick(event) {
 diff --git a/node_modules/youtube-background/youtube-background-experimental.js b/node_modules/youtube-background/youtube-background-experimental.js
-index c92366a..1a909bc 100644
+index c92366a..c287423 100644
 --- a/node_modules/youtube-background/youtube-background-experimental.js
 +++ b/node_modules/youtube-background/youtube-background-experimental.js
-@@ -268,10 +268,10 @@
+@@ -268,12 +268,13 @@
        if (!this.targetSelector)
          return;
        this.active = false;
@@ -191,8 +220,11 @@ index c92366a..1a909bc 100644
 +        this.element.setAttribute("aria-checked", this.active);
        }
        this.element.setAttribute("role", "switch");
++      this.element.setAttribute("aria-label", "Toggle Play/Pause");
        this.targetElem = document.querySelector(this.targetSelector);
-@@ -293,24 +293,24 @@
+       if (!this.targetElem)
+         return;
+@@ -293,24 +294,24 @@
        if (!this.vbgInstance)
          this.vbgInstance = event.detail;
        this.active = this.vbgInstance.currentState === "playing" || this.vbgInstance.currentState === "buffering";
@@ -221,7 +253,7 @@ index c92366a..1a909bc 100644
      }
      onClick(event) {
        if (!this.vbgInstance)
-@@ -331,10 +331,10 @@
+@@ -331,12 +332,13 @@
        if (!this.targetSelector)
          return;
        this.active = false;
@@ -234,8 +266,11 @@ index c92366a..1a909bc 100644
 +        this.element.setAttribute("aria-checked", this.active);
        }
        this.element.setAttribute("role", "switch");
++      this.element.setAttribute("aria-label", "Toggle Mute/Unmute");
        this.targetElem = document.querySelector(this.targetSelector);
-@@ -352,25 +352,25 @@
+       if (!this.targetElem)
+         return;
+@@ -352,25 +354,25 @@
        this.vbgInstance = event.detail;
        if (this.vbgInstance.params.muted) {
          this.active = true;
