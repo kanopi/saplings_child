@@ -33,12 +33,14 @@
         "gulp": "gulp",
         "watch": "gulp watch",
         "build": "gulp build",
-        "criticalcss": "node critical-css/clean.js && node critical-css/criticalcss.mjs"
+        "criticalcss": "node critical-css/clean.js && node critical-css/criticalcss.mjs",
+        "postinstall": "patch-package"
     },
     "dependencies": {
         "cssnano": "^6.0.1",
         "dotenv": "^16.0.3",
         "patch-package": "^8.0.0",
-        "postcss-inline-svg": "^5.0.0"
+        "postcss-inline-svg": "^5.0.0",
+        "youtube-background": "^1.1.8"
     }
 }
