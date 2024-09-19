@@ -127,6 +127,14 @@
 .page-header {
   @include media-breakpoint-up(lg) {
     min-height: 55vh;
+    overflow: hidden;
+  }
+
+  &.image {
+    img {
+      object-fit: cover;
+      // height: unset;
+    }
   }
 
   &.video {
