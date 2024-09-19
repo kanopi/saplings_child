@@ -98,7 +98,7 @@
   {% set overlay_level = paragraph.sa_overlay.value %}
 {% endif %}
 
-{% block paragraph %}  
+{% block paragraph %}
 
 <div{{ attributes.addClass(classes) }}
     {% if overlay_level %}
@@ -122,11 +122,13 @@
             <div class="{{ width_class_string }}">
         {% endif %}
         {% block content %}
+        {% if paragraph.sa_hero_content.value is not empty %}
           <div class="hero-content">
             <div class="text-wrapper">
               {{ content.sa_hero_content }}
             </div>
           </div>
+        {% endif %}
         {% endblock %}
         {% if paragraph.sa_width.value is not empty %}
             </div>
