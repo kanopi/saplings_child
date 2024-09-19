@@ -101,3 +101,11 @@ lite-youtube {
 .text-align-right {
   text-align: end;
 }
+
+[data-once*="environmentIndicatorRibbon"].path-frontend-editing .environment-indicator-ribbon {
+  display: none;
+}
+
+.contextual {
+  display: none;
+}
