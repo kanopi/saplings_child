@@ -38,7 +38,9 @@
     .field--name-sa-description {
       @extend .bottom-50;
       @extend .top-50;
-      @extend .translate-middle-y;
+      @include media-breakpoint-up(lg) {
+        transform: translateY(-50%);
+      }
     }
   }
 }
@@ -57,6 +59,7 @@
       padding: 1rem !important;
       position: relative !important;
       width: 100% !important;
+      transform: none !important;
     }
   }
 }

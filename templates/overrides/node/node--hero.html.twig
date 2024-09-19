@@ -79,6 +79,8 @@
   {% set overlay_level = content.sa_overlay|render|striptags|trim %}
 {% endif %}
 
+{% set hero_media = content.sa_featured_media[0]['#media'].bundle.value[0].target_id %}
+
 {%
   set classes = [
     node.bundle|clean_class,
@@ -93,7 +95,24 @@
     <h1 class="visually-hidden">{{ label }}</h1>
   {% else %}
     {# Prints a nice image header. #}
-    {% if content.sa_featured_image[0] is not empty %}
+    {% if content.sa_featured_media[0] is not empty %}
+
+      {{ attach_library('saplings_child/hero-video') }}
+      {{ attach_library('saplings_child/hero-video-youtube') }}
+      {{ attach_library('saplings_child/fontawesome') }}
+
+      <div class="page-header mb-lg-0 mb-3 {{ hero_media }} {% if header_position is not empty %} {{ header_position }}{% endif %}"{% if overlay_level is not empty %} data-overlay="{{ overlay_level }}{% endif %}">
+        {% if content.sa_featured_media[0]['#media'].bundle.value.0.target_id == 'image' %}
+          <div class="hero-image-page">
+              {{ content.sa_featured_media }}
+          </div>
+        {% elseif content.sa_featured_media[0]['#media'].bundle.value.0.target_id == 'remote_video' %}
+          <div class="hero-image-page" {% if content.sa_include_pause_button[0]['#markup'] == '1' %}data-vbg-play-button="true"{% endif %} {% if content.sa_include_mute_button[0]['#markup'] == '1' %}data-vbg-mute-button="true"{% endif %} data-vbg="{{ content.sa_featured_media[0]['#media'].field_media_oembed_video.0.value }}"></div>
+        {% else %}
+          <div class="hero-image-page" {% if content.sa_include_pause_button[0]['#markup'] == '1' %}data-vbg-play-button="true"{% endif %} {% if content.sa_include_mute_button[0]['#markup'] == '1' %}data-vbg-mute-button="true"{% endif %} data-vbg="{{ file_url(content.sa_featured_media[0]['#media'].field_media_video_file.entity.uri.value) }}"></div>
+        {% endif %}
+        <div class="page-header__meta">
+    {% elseif content.sa_featured_image[0] is not empty %}
       <div class="page-header mb-lg-0 mb-3 {% if header_position is not empty %} {{ header_position }}{% endif %}"{% if overlay_level is not empty %} data-overlay="{{ overlay_level }}{% endif %}">
         {{ content.sa_featured_image }}
         <div class="page-header__meta">
@@ -128,11 +147,11 @@
                 {{ content.sa_external_source }}
               </div>
             {% endif %}
-    {% if content.sa_featured_image[0] is not empty %}
+    {% if content.sa_featured_media[0] is not empty or content.sa_featured_image[0] is not empty %}
         </div> <!-- / page-header__meta -->
     {% endif %}
         <div class="field--name-sa-description">{{ content.sa_description }}</div>
-    {% if content.sa_featured_image[0] is not empty %}
+    {% if content.sa_featured_media[0] is not empty or content.sa_featured_image[0] is not empty %}
       </header> <!-- / page-header -->
     {% else %}
     {% endif %}
