@@ -36,11 +36,9 @@
   &.position_middle {
     .page-header__meta,
     .field--name-sa-description {
-      @extend .bottom-50;
-      @extend .top-50;
-      @include media-breakpoint-up(lg) {
+        top: 50%;
+        bottom: 50%;
         transform: translateY(-50%);
-      }
     }
   }
 }

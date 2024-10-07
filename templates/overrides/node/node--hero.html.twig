@@ -90,55 +90,70 @@
   ]
 %}
 
-<header{{ attributes.addClass(classes) }}>
+<header{{attributes.addClass(classes)}}>
   {% if content.sa_hide_header[0]["#markup"] == 1 %}
     <h1 class="visually-hidden">{{ label }}</h1>
   {% else %}
-    {# Prints a nice image header. #}
+  {# Prints a nice image header. #}
     {% if content.sa_featured_media[0] is not empty %}
+    {{ attach_library('saplings_child/hero-video') }}
+    {{ attach_library('saplings_child/fontawesome') }}
 
-      {{ attach_library('saplings_child/hero-video') }}
-      {{ attach_library('saplings_child/hero-video-youtube') }}
-      {{ attach_library('saplings_child/fontawesome') }}
-
-      <div class="page-header mb-lg-0 mb-3 {{ hero_media }} {% if header_position is not empty %} {{ header_position }}{% endif %}"{% if overlay_level is not empty %} data-overlay="{{ overlay_level }}{% endif %}">
-        {% if content.sa_featured_media[0]['#media'].bundle.value.0.target_id == 'image' %}
-          <div class="hero-image-page">
-              {{ content.sa_featured_media }}
-          </div>
+      <div class="page-header mb-lg-0 mb-3 {{ hero_media }} {% if header_position is not empty %} {{ header_position }}{% endif %}" {% if overlay_level is not empty %} data-overlay="{{ overlay_level }}{% endif %}">
+      {% if content.sa_featured_media[0]['#media'].bundle.value.0.target_id == 'image' %}
+        <div class="hero-image-page">
+          {{ content.sa_featured_media}}
         {% elseif content.sa_featured_media[0]['#media'].bundle.value.0.target_id == 'remote_video' %}
-          <div class="hero-image-page" {% if content.sa_include_pause_button[0]['#markup'] == '1' %}data-vbg-play-button="true"{% endif %} {% if content.sa_include_mute_button[0]['#markup'] == '1' %}data-vbg-mute-button="true"{% endif %} data-vbg="{{ content.sa_featured_media[0]['#media'].field_media_oembed_video.0.value }}"></div>
-        {% else %}
-          <div class="hero-image-page" {% if content.sa_include_pause_button[0]['#markup'] == '1' %}data-vbg-play-button="true"{% endif %} {% if content.sa_include_mute_button[0]['#markup'] == '1' %}data-vbg-mute-button="true"{% endif %} data-vbg="{{ file_url(content.sa_featured_media[0]['#media'].field_media_video_file.entity.uri.value) }}"></div>
-        {% endif %}
-        <div class="page-header__meta">
-    {% elseif content.sa_featured_image[0] is not empty %}
-      <div class="page-header mb-lg-0 mb-3 {% if header_position is not empty %} {{ header_position }}{% endif %}"{% if overlay_level is not empty %} data-overlay="{{ overlay_level }}{% endif %}">
-        {{ content.sa_featured_image }}
-        <div class="page-header__meta">
-    {# If there is no image, print a simple header. #}
-    {% else %}
+          <div class="hero-image-page" {% if content.sa_include_pause_button[0]['#markup'] == '1' %} data-vbg-play-button="true" {% endif %} {% if content.sa_include_mute_button[0]['#markup'] == '1' %} data-vbg-mute-button="true" {% endif %} data-vbg="{{ content.sa_featured_media[0]['#media'].field_media_oembed_video.0.value }}">
+          {% else %}
+            <div class="hero-image-page" {% if content.sa_include_pause_button[0]['#markup'] == '1' %} data-vbg-play-button="true" {% endif %} {% if content.sa_include_mute_button[0]['#markup'] == '1' %} data-vbg-mute-button="true" {% endif %} data-vbg="{{ file_url(content.sa_featured_media[0]['#media'].field_media_video_file.entity.uri.value) }}">
+            {% endif %}
+          </div>
+            <div class="page-header__meta">
+              {{ title_prefix }}
+              <h1>{{ label }}</h1>
+              {{ title_suffix }}
+              {% if content.sa_author is not empty %}
+                <div class="field--name-sa-author">
+                  <span class="fw-bold">By:</span>
+                  {% if content.sa_author_url is not empty %}
+                    <a href="{{ content.sa_author_url|render|striptags|trim }}">
+                    {% endif %}
+                    {{ content.sa_author }}
+                    {% if content.sa_author_url is not empty %}
+                    </a>
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if content.sa_external_source is not empty %}
+                <div class="field--name-sa-external-source">
+                  {{ content.sa_external_source }}
+                </div>
+              {% endif %}
+            </div>
+            {% if content.sa_description is not empty %}
+              <div class="field--name-sa-description">{{ content.sa_description }}</div>
+            {% endif %}
+          </div>
+  {% elseif content.sa_featured_media[0] is empty %}
+    <div
+      class="page-header__meta">
+      {# If there is no image, print a simple header. #}
       <div class="container">
-        <header class="row">
-          <div class="col col-12">
-    {% endif %}
+        <div class="row">
             {{ title_prefix }}
             <h1>{{ label }}</h1>
             {{ title_suffix }}
-            {% if node.bundle == 'sa_post'%}
-              <div class="field--name-published_at">
-                {{ node.published_at.value|date('F j, Y') }}
-              </div>
-            {% endif %}
             {% if content.sa_author is not empty %}
               <div class="field--name-sa-author">
-                <span class="fw-bold">By: </span>
+                <span class="fw-bold">By:
+                </span>
                 {% if content.sa_author_url is not empty %}
                   <a href="{{ content.sa_author_url|render|striptags|trim }}">
-                {% endif %}
-                {{ content.sa_author }}
-                {% if content.sa_author_url is not empty %}
-                </a>
+                  {% endif %}
+                  {{ content.sa_author }}
+                  {% if content.sa_author_url is not empty %}
+                  </a>
                 {% endif %}
               </div>
             {% endif %}
@@ -147,9 +162,13 @@
                 {{ content.sa_external_source }}
               </div>
             {% endif %}
-    {% if content.sa_featured_media[0] is not empty or content.sa_featured_image[0] is not empty %}
-        </div> <!-- / page-header__meta -->
+            {% if content.sa_description is not empty %}
+              <div class="field--name-sa-description">{{ content.sa_description }}</div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <!-- / page-header__meta -->
     {% endif %}
-        <div class="field--name-sa-description">{{ content.sa_description }}</div>
-     </header> <!-- / page-header -->
-  {% endif %}
+    {% endif %}
+  </header>
