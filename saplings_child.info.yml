@@ -1,7 +1,7 @@
 name: "Saplings Child"
 type: theme
 description: "Saplings Child Theme"
-core_version_requirement: ^10
+core_version_requirement: ^10 || ^11
 base theme: ui_suite_bootstrap
 
 regions:
