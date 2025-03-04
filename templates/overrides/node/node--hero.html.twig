@@ -98,8 +98,6 @@
     {% if content.sa_featured_media[0] is not empty %}
 
       {{ attach_library('saplings_child/hero-video') }}
-      {{ attach_library('saplings_child/hero-video-youtube') }}
-      {{ attach_library('saplings_child/fontawesome') }}
 
       <div class="page-header mb-lg-0 mb-3 {{ hero_media }} {% if header_position is not empty %} {{ header_position }}{% endif %}"{% if overlay_level is not empty %} data-overlay="{{ overlay_level }}{% endif %}">
         {% if content.sa_featured_media[0]['#media'].bundle.value.0.target_id == 'image' %}
