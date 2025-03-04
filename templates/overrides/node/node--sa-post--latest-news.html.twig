@@ -1,0 +1,16 @@
+{%
+  set classes = [
+    node.bundle|clean_class,
+    node.isPromoted() ? 'is-promoted',
+    node.isSticky() ? 'is-sticky',
+    view_mode ? view_mode|clean_class,
+    'mb-3',
+    'position-relative'
+  ]
+%}
+
+<div {{ attributes.addClass(classes) }}>
+    <a class="node-title d-block mb-3" href="{{ url }}">{{ label }}</a>
+    {{ content.sa_body }}
+    {{ content.sa_type }}
+</div>
