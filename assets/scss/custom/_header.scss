@@ -78,13 +78,13 @@
   @extend .w-100;
   @extend .h-100;
   @extend .d-block;
-  @extend .z-1;
+  @extend .z-2;
   content: "";
 }
 
-// Anything in the div is higher than the overlay.
+// Anything in the div is lower than the overlay.
 [data-overlay] * {
-  @extend .z-2;
+  @extend .z-1;
 }
 
 // Sets dark overlay and white text.
