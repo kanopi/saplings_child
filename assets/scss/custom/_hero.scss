@@ -9,8 +9,8 @@
   @include media-breakpoint-up(lg) {
     min-height: 55vh;
   }
-  
-  
+
+
 
   #hero-video-control {
       background-color: unset;
@@ -31,14 +31,13 @@
       .bi {
           font-size: 1.5rem;
       }
-  }    
+  }
 
   .hero-image {
       width: 100%;
       height: 100%;
       top: 0;
       left: 0;
-      aspect-ratio: 16 / 9;
       position: unset !important;
 
       @include media-breakpoint-down(lg) {
@@ -85,13 +84,13 @@
         .bi {
           color: white;
         }
-  
+
         // Set all inner content to be higher z-index than before.
         .text-wrapper, #hero-video-control {
           position: relative;
           z-index: 2;
         }
-  
+
         &:before {
           background: #252525 none repeat scroll 0 0;
           content: "";
@@ -103,7 +102,7 @@
           width: 100%;
           z-index: 0;
         }
-  
+
         &--overlay-invert {
           &:before {
             background: #fff none repeat scroll 0 0;
@@ -132,7 +131,7 @@
 
   &.video {
     @include media-breakpoint-up(lg) {
-        
+
     }
 
     video {
@@ -142,12 +141,11 @@
 }
 }
 
-.hero-image-page { 
+.hero-image-page {
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  aspect-ratio: 16 / 9;
   z-index: 0 !important;
   position: unset !important;
 
