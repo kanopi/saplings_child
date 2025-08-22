@@ -16,9 +16,6 @@ hero-video:
   js:
     dist/js/hero.js: { minified: true }
 
-fontawesome: 
-  js: 
-    https://kit.fontawesome.com/0a9b1aaff7.js: { type: external, minified: false }
 tabs:
   js:
     dist/js/tabs.js: { minified: false }
